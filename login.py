@@ -1,11 +1,12 @@
 import requests
 import webbrowser
 
+
 def logon():
 
     try:
 
-        with requests.Session() as c :
+        with requests.Session() as c:
 
             url = 'http://phc.prontonetworks.com/cgi-bin/authlogin?'
 
@@ -16,11 +17,13 @@ def logon():
 
             print('Starting ...')
             c.get(url)
-            login_data = dict(userId = USERNAME, password = PASSWORD, serviceName = 'ProntoAuthentication', Submit22 = 'Login')
-            c.post(url, data = login_data)
+            login_data = dict(userId=USERNAME, password=PASSWORD,
+                              serviceName='ProntoAuthentication', Submit22='Login')
+            c.post(url, data=login_data)
 
             print('Your credentials has been posted ...')
-            page = c.get('http://phc.prontonetworks.com/cgi-bin/authlogin?URI=http://go.microsoft.com/fwlink/').text
+            page = c.get(
+                'http://phc.prontonetworks.com/cgi-bin/authlogin?URI=http://go.microsoft.com/fwlink/').text
 
             print('Successfully Logged in.')
             print('Opening Github profile ...')
